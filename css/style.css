@@ -1,0 +1,140 @@
+#contact input[type="file"] ,  #contact input[type="email"] ,#contact input[type="text"],#contact input[type="password"]{
+	width:100%;
+	border:1px solid #CCC;
+	background:rgb(192, 125, 125);
+	margin:0 0 5px;
+	padding:10px;
+}
+#contact button[type="submit"] {
+	cursor:pointer;
+	width:100%;
+	border:none;
+	background:rgb(181, 190, 192);
+	color:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+}
+#eye
+{
+    display:none;
+}
+.centree
+{
+margin: auto;
+
+}
+
+body
+{
+	background-color: #9e9ba4;
+	font-family: 'Playfair Display';
+	min-height: 100vh;
+	background-color: #727a7a;
+	display: flex;
+	align-items: center;
+
+}
+#form-bg
+{
+	background-color: rgb(55, 58, 71);
+	border-radius: 8px;
+	padding: 40px;
+	margin-top:100px; 
+	color:rgb(221, 226, 228);
+}
+#form-bg
+{
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.link {
+	position: relative;
+	color: #9e9ba4;
+}
+.link--yaku {
+	color: #D3D3D3;
+	font-family: 'Playfair Display';
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: 5em;
+}
+
+.link--yaku::before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+
+	-webkit-transform: translate3d(-101%,0,0);
+	transform: translate3d(-101%,0,0);
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.link--yaku:hover::before {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.link--yaku span {
+	display: inline-block;
+	position: relative;
+	-webkit-transform: perspective(1000px) rotate3d(0,1,0,0deg);
+	transform: perspective(1000px) rotate3d(0,1,0,0deg);
+	-webkit-transition: -webkit-transform 0.5s, color 0.5s;
+	transition: transform 0.5s, color 0.5s;
+}
+
+.link--yaku:hover span {
+	color: #1e1a1b;
+	-webkit-transform: perspective(1000px) rotate3d(0,1,0,360deg);
+	transform: perspective(1000px) rotate3d(0,1,0,360deg);
+}
+
+.link--yaku span:nth-child(4),
+.link--yaku:hover span:first-child {
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
+}
+
+.link--yaku span:nth-child(3),
+.link--yaku:hover span:nth-child(2) {
+	-webkit-transition-delay: 0.1s;
+	transition-delay: 0.1s;
+}
+
+.link--yaku span:nth-child(2),
+.link--yaku:hover span:nth-child(3) {
+	-webkit-transition-delay: 0.2s;
+	transition-delay: 0.2s;
+}
+
+.link--yaku span:first-child,
+.link--yaku:hover span:nth-child(4) {
+	-webkit-transition-delay: 0.3s;
+	transition-delay: 0.3s;
+}
+.button {
+	background-color: rgb(55, 58, 71);
+	border: none;
+	color: white;
+	padding: 25px ;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin-right: 50px;
+	border-radius: 8px;
+	cursor: pointer;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+  }
+  .button2:hover {
+	box-shadow: 0 12px 16px 0 rgba(3, 3, 3, 0.19),10px 27px 58px 0 rgba(12, 11, 11, 0.19);
+	color: #bbbbc2;
+  }
+  .ins
+  {
+	color:white;
+  }
+
