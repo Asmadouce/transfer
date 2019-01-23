@@ -39,10 +39,4 @@ if(isset($_SESSION)){
 	</div>
 </section>
 
-
-
-
-
-
-
 <?php include 'footer.php'; ?>

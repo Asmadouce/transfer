@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/animate.css" />
     </head>
+
     <header>
         <div class="link" >
             <div class="container">
@@ -21,17 +22,15 @@
     
         <div class="container sticky-top" >              
             <nav class="navbar navbar-expand-lg">      
-                    <div class="navbar-nav Dosis-Bold-nav">
-                        
-                            <a class="button button2 nav-item nav-link pad" href="inscription.php">Inscription</a>
-                       
-                        
-                            <a class="button button2 nav-item nav-link pad ins" href="login.php">Connexion</a>
-                        
-                        
-                            <a class=" button button2 nav-item nav-link pad ins" href="logout.php">Déconnexion</a>
-                        
-                    </div>             			  					
+                <div class="navbar-nav Dosis-Bold-nav"> 
+                <?php if(isset($_SESSION)){?>
+                    <a class=" button button2 nav-item nav-link pad ins" href="infoLink.php">Historique</a>                       
+                    <a class=" button button2 nav-item nav-link pad ins" href="logout.php">Déconnexion</a>
+               <?php } ?>
+                    
+                    <a class="button button2 nav-item nav-link pad" href="inscription.php">Inscription</a>      
+                    <a class="button button2 nav-item nav-link pad ins" href="login.php">Connexion</a>
+                </div>             			  					
             </nav>
         </div>
     </header>

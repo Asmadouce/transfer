@@ -1,33 +1,48 @@
 <?php include 'fonction.php'; 
-session_start();
-$_SERVER['argc'];
-$_SERVER['argv'];
-print_r($_SERVER);
+//https://crontab-generator.org/
+//https://doc.ubuntu-fr.org/cron
 
-$now = time();
-$day = strtotime('+1 day');
-$min = strtotime('+10 minutes');
-$id = $_SESSION['id'];
-//var_dump($id);
 
-function idLink($bdd,$id) 
+
+
+function updateFromBdd($bdd) {
+    $fileId=$bdd->query('SELECT `userId` FROM `link`');
+    while($file=$fileId->fetch()) {
+        $id=$file;
+        var_dump($id);
+        if($id['userId']!=1) {
+            $timing=3;
+        }else {
+            $timing=1;
+        }
+        $reponse=$bdd->prepare('UPDATE `link` SET `chemin`=:chemin WHERE `userId` = ' .$id['userId']. ' AND ADDDATE(`link`.`date`,INTERVAL ' .$timing. ' MINUTE) < NOW()');
+        $requete = $reponse->execute(array(
+            'chemin'=>'#'
+        ));
+    }
+ }
+
+/*function userId($bdd,$id) 
 {
-    $reponse=$bdd->query('SELECT link.id FROM link 
-    INNER JOIN users ON link.`userId` = users.id WHERE users.id='.$id); 
+    $reponse=$bdd->query('SELECT `userId` FROM `link`'); 
     return $reponse;
 }
-  
+
+
 function updateLink($bdd,$id)
-{   
-    $link = idLink($bdd,$id);//permet de récupérer l'id de la table 'link'
-    while ($idLink = $link-> fetch())
-    {
-        $reponse=$bdd->prepare('UPDATE `link` SET `chemin`=:chemin WHERE  id ='.$idLink['id']);
-        $requete=$reponse->execute(array(
-        'chemin'=> '#',   
-        ));
-        //var_dump($idLink['id']);
-    };  
-   
-}  
-updateLink($bdd,$id);
+    {   
+        $userId = UserId($bdd,$id);//permet de récupérer l'id de la table 'link'
+        var_dump($userId);
+            while ($idLink = $link-> fetch())
+            {
+                $reponse=$bdd->prepare('UPDATE `link` SET `chemin`=:chemin WHERE  id ='.$idLink['id']);
+                $requete=$reponse->execute(array(
+                'chemin'=> '#',   
+                ));
+                var_dump($idLink['id']);
+                
+        };
+      
+    }  */
+
+

@@ -4,34 +4,39 @@ if(isset($_POST['sub'])){
     newContact($bdd);
 }
 
+if (isset($_POST))
+{
+        $nom                   = $_POST["nom"];
+        $chemin                = $_FILES["chemin"]["name"];
+        $uploadir              = "files/";
+        $cheminPath            = $uploadir. basename($chemin);
+        $size = $_FILES['chemin']['size'];
+        $id = $_SESSION['id'];
 
- //var_dump($_POST);
-$nom                   = $_POST["nom"];
-$chemin                = $_FILES["chemin"]["name"];
-$uploadir              = "files/";
-$cheminPath            = $uploadir. basename($chemin);
-$size = $_FILES['chemin']['size'];
-$id = $_SESSION['id'];
+    //var_dump($_POST);
 
-//var_dump();
 
-//echo '<pre>';
-if ((isset($_SESSION) && $size > 7000000) || (!$_SESSION && $size > 3000000)) {
-    echo "votre fichier est trop lourd ! ";
-} else {
-    if (move_uploaded_file($_FILES['chemin']['tmp_name'], $cheminPath)) 
-    {
-            echo "Le fichier est valide, et a été téléchargé avec succès.";
-            $req = $bdd->prepare('INSERT INTO link(`name`,`chemin`,`userId`) VALUES(:nom,:chemin,:userId)');
-            $req->execute([
-                'nom'=>$nom,
-                'chemin'=>$cheminPath,
-                'userId'=>$id 
-            ]);
-            header("location:download.php?link=".$cheminPath);
+
+    if ( !$_SESSION ) {$id=1;} else { $id = $_SESSION['id']; }
+    //var_dump();
+
+    //echo '<pre>';
+    if ((isset($_SESSION) && $size > 7000000) || (!$_SESSION && $size > 3000000)) {
+        echo "votre fichier est trop lourd ! ";
+    } else {
+        if (move_uploaded_file($_FILES['chemin']['tmp_name'], $cheminPath)) 
+        {
+                echo "Le fichier est valide, et a été téléchargé avec succès.";
+                $req = $bdd->prepare('INSERT INTO link(`name`,`chemin`,`userId`) VALUES(:nom,:chemin,:userId)');
+                $req->execute([
+                    'nom'=>$nom,
+                    'chemin'=>$cheminPath,
+                    'userId'=>$id 
+                ]);
+                header("location:download.php?link=".$cheminPath);
+        }
     }
 }
-
 //echo '</pre>';
 //--------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------
