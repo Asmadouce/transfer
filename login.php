@@ -1,12 +1,12 @@
 <?php ;
-include 'fonction.php';
 include 'header.php';
 include 'session.php';
-var_dump($_SESSION);?>
+session_start(); //var_dump($_SESSION);
+?>
 
 
 
-<div class="container">
+<div class="container animated fadeInUp">
     <div class="col-md-7 centree" id="form-bg" >
         <form id="contact" action="login.php" method="post"> <!-- enctype="multipart/form-data" -->
             <h3>Connexion</h3>

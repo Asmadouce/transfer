@@ -14,3 +14,10 @@
           eyeHidden.style.display = "block";
         }
     } 
+
+    function downFunction()
+    {
+      
+      var d = document.getElementById("down");console.log(d);
+      d.classList.add("animated", "fadeOutDown", "infinite");
+    }

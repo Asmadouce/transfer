@@ -13,7 +13,7 @@ if (isset($_POST))
         $size = $_FILES['chemin']['size'];
         $id = $_SESSION['id'];
 
-    //var_dump($_POST);
+    //var_dump($chemin);
 
 
 
@@ -26,10 +26,12 @@ if (isset($_POST))
     } else {
         if (move_uploaded_file($_FILES['chemin']['tmp_name'], $cheminPath)) 
         {
+                chmod($cheminPath, 0666);
                 echo "Le fichier est valide, et a été téléchargé avec succès.";
-                $req = $bdd->prepare('INSERT INTO link(`name`,`chemin`,`userId`) VALUES(:nom,:chemin,:userId)');
+                $req = $bdd->prepare('INSERT INTO link(`name`,`filename`,`chemin`,`userId`) VALUES(:nom,:cheminnom ,:chemin,:userId)');
                 $req->execute([
                     'nom'=>$nom,
+                    'cheminnom'=>$chemin,
                     'chemin'=>$cheminPath,
                     'userId'=>$id 
                 ]);

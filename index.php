@@ -1,15 +1,14 @@
 <?php 
 include "header.php"; 
-include "fonction.php";
 
 if(isset($_SESSION)){
-    //var_dump($_SESSION);
+   // var_dump($_SESSION);
     //$id =$_GET['id'];	
     //var_dump($_GET);
 
 }?>
     <body>
-        <div class="container">
+        <div class="container animated fadeInUp">
             <div class="col-md-7 centree" id="form-bg" >
                 <form  id="contact" action="index.php" method="post" enctype="multipart/form-data">
                     <div class="col-md-12 centree form-group">

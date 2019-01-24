@@ -1,9 +1,8 @@
 <?php ;
-include 'fonction.php';
 include 'header.php';
 //var_dump($_POST);
 ?>
-<div class="container">  
+<div class="container animated fadeInUp">  
     <div class="col-md-7 centree" id="form-bg" >
         <form  id="contact" action="fonction.php" method="post" > 
             <h3>Inscription</h3>

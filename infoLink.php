@@ -1,6 +1,5 @@
 <?php 
 include "header.php"; 
-include "fonction.php";
 
 if(isset($_SESSION)){
     //var_dump($_SESSION);

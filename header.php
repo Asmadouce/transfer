@@ -1,3 +1,5 @@
+<?php include "fonction.php";?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,10 +9,13 @@
         <link rel="stylesheet" href="library/bootstrap/css/bootstrap.css" />
 	    <link rel="stylesheet" href="library/fontawesome/css/all.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
-        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <link rel="stylesheet" href="css/animate.min.css" />
     </head>
 
     <header>
+    
+
+    
         <div class="link" >
             <div class="container">
                 <h2>JOHN & ASMAOUI</h2>
@@ -19,18 +24,28 @@
                 </a>
             </div> 
         </div>
-    
-        <div class="container sticky-top" >              
-            <nav class="navbar navbar-expand-lg">      
-                <div class="navbar-nav Dosis-Bold-nav"> 
-                <?php if(isset($_SESSION)){?>
-                    <a class=" button button2 nav-item nav-link pad ins" href="infoLink.php">Historique</a>                       
-                    <a class=" button button2 nav-item nav-link pad ins" href="logout.php">Déconnexion</a>
-               <?php } ?>
-                    
-                    <a class="button button2 nav-item nav-link pad" href="inscription.php">Inscription</a>      
+
+        <div class="container sticky-top" >
+            <div class="row">    
+                <nav class="navbar navbar-expand-lg col-9">      
+                    <div class="navbar-nav Dosis-Bold-nav"> 
+                    <?php if($_SESSION['mail']){?>
+                        <a class=" button button2 nav-item nav-link pad ins" href="infoLink.php">Historique</a>                       
+                        <a class=" button button2 nav-item nav-link pad ins" href="logout.php">Déconnexion</a>
+                <?php } 
+                else { ?>
+                    <a class="animated infinite tada delay-2s button button2 nav-item nav-link pad" href="inscription.php">Inscription</a>      
                     <a class="button button2 nav-item nav-link pad ins" href="login.php">Connexion</a>
-                </div>             			  					
-            </nav>
+                    <?php }?>               
+                    </div>             			  					
+                </nav>
+                <div id="message">
+                    <?php   $welcome=($_SESSION['id']);
+                if($_SESSION){
+                    echo 'Bienvenue ' .$_SESSION['mail'];
+                }
+                    ?>
+                </div>
+            </div>
         </div>
     </header>

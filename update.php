@@ -9,7 +9,7 @@ function updateFromBdd($bdd) {
     $fileId=$bdd->query('SELECT `userId` FROM `link`');
     while($file=$fileId->fetch()) {
         $id=$file;
-        var_dump($id);
+        //var_dump($id);
         if($id['userId']!=1) {
             $timing=3;
         }else {
@@ -17,32 +17,21 @@ function updateFromBdd($bdd) {
         }
         $reponse=$bdd->prepare('UPDATE `link` SET `chemin`=:chemin WHERE `userId` = ' .$id['userId']. ' AND ADDDATE(`link`.`date`,INTERVAL ' .$timing. ' MINUTE) < NOW()');
         $requete = $reponse->execute(array(
-            'chemin'=>'#'
+            'chemin'=>'*'
         ));
     }
  }
+ updateFromBdd($bdd) ;
+ 
+ function deleteOldFiles($bdd) {
 
-/*function userId($bdd,$id) 
-{
-    $reponse=$bdd->query('SELECT `userId` FROM `link`'); 
-    return $reponse;
+    $file=$bdd->query('SELECT filename FROM link WHERE `chemin`="*"');
+    while ($filename=$file->fetch())
+     {
+       shell_exec('rm /var/www/transfer/files/'.$filename['filename']);
+       var_dump($filename);
+     }
 }
-
-
-function updateLink($bdd,$id)
-    {   
-        $userId = UserId($bdd,$id);//permet de récupérer l'id de la table 'link'
-        var_dump($userId);
-            while ($idLink = $link-> fetch())
-            {
-                $reponse=$bdd->prepare('UPDATE `link` SET `chemin`=:chemin WHERE  id ='.$idLink['id']);
-                $requete=$reponse->execute(array(
-                'chemin'=> '#',   
-                ));
-                var_dump($idLink['id']);
-                
-        };
-      
-    }  */
+deleteOldFiles($bdd);
 
 
